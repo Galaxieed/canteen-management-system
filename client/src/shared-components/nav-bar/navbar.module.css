@@ -1,0 +1,20 @@
+.navbarSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbarSection > div:last-child > ul{
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.navbarSection > div:last-child > ul > li {
+    cursor: pointer;
+}
+
+.navbarSection > div:last-child > ul > li:hover {
+    border-bottom: 1px solid white;
+}
