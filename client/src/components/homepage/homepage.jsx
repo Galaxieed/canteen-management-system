@@ -1,7 +1,7 @@
 import Container from '@mui/material/Container';
-import NavBar from '../../shared-components/nav-bar/navbar';
 import homepage from './homepage.module.css';
 import Footer from '../../shared-components/footer/footer';
+import NavBar from '../../shared-components/nav-bar/navbar';
 
 export default function Homepage() {
     return (

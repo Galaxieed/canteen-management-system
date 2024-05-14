@@ -1,33 +1,11 @@
 .homepageSection {
-    height: 100%;
+    margin-bottom: 150px;
 }
 
-.homepageSection::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: inherit;
-    width: 100%;
-    z-index: -2;
-
-    background-image: url("../../assets/wallpaper.jpg");
-}
-
-.homepageSection::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    height: inherit;
-    width: 100%;
-    z-index: -1;
-    
-    background: linear-gradient(transparent, black);
-}
 
 .gridContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     grid-gap: 100px;
     padding: 20px;
 }
@@ -36,7 +14,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
+}
+
+.gridContainer > div:first-child {
+    position: relative;
 }
 
 .logo {
@@ -46,6 +28,8 @@
 
 .slogan {
     font-family: "Salsa", cursive;
+    position: absolute;
+    top: 400px;
 }
 
 .formContainer {
@@ -70,6 +54,7 @@
 
 .formContainer > form > input {
     font-size: large;
+    width: 300px;
     padding: 10px 20px;
     border-radius: 25px;
 }

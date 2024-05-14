@@ -7,7 +7,8 @@ export default function Footer() {
     return (
         <Container>
             <div className={`${footer.footerSection}`}>
-                <CopyrightIcon />
+                <p>Copyright</p> &nbsp;
+                <CopyrightIcon /> &nbsp;
                 <p>Galaxieed {currentYear}</p>
             </div>
         </Container>
