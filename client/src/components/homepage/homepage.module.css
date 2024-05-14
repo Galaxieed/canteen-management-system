@@ -1,0 +1,126 @@
+.homepageSection {
+    height: 100%;
+}
+
+.homepageSection::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: inherit;
+    width: 100%;
+    z-index: -2;
+
+    background-image: url("../../assets/wallpaper.jpg");
+}
+
+.homepageSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: inherit;
+    width: 100%;
+    z-index: -1;
+    
+    background: linear-gradient(transparent, black);
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-gap: 100px;
+    padding: 20px;
+}
+
+.gridContainer > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    filter: invert();
+    height: 500px;
+}
+
+.slogan {
+    font-family: "Salsa", cursive;
+}
+
+.formContainer {
+    border: 1px solid white;
+    border-radius: 50px;
+    padding: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    backdrop-filter: blur(5px);
+}
+
+.formContainer > form {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.formContainer > form > input {
+    font-size: large;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+/* Login Button */
+.formContainer > form > button {
+    font-size: large;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 25px;
+    font-weight: bold;
+
+    border: none;
+    color: white;
+    background-image: linear-gradient(to right, #780042, #0f007f);
+
+    transition: all 0.3s ease-in-out;
+}
+
+.formContainer > form > button:hover {
+    transform: scale(1.01);
+    filter: contrast(200%);
+}
+
+.formContainer > a {
+    text-decoration: none;
+    color: palevioletred;
+}
+
+.formContainer > a:hover {
+    filter: contrast(200%);
+}
+
+.formContainer > hr {
+    width: 100%;
+    opacity: 25%;
+}
+
+/* create account button */
+.formContainer > button {
+    font-size: large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    
+    background-color: transparent;
+    color: white;
+    outline: none;
+    border: 1px solid white;
+}
+
+.formContainer > button:hover {
+    transform: scale(1.01);
+}

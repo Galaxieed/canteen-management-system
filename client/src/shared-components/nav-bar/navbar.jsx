@@ -1,5 +1,6 @@
 import { Container } from "@mui/material";
 import navbar from "./navbar.module.css";
+import { Link } from "react-router-dom";
 
 export default function NavBar () {
     return (
@@ -10,13 +11,15 @@ export default function NavBar () {
         }}>
             <div className={`${navbar.navbarSection}`}>
                 <div>
-                    <h2>CMS</h2>
+                    <Link to={'/'}>
+                        <h2><p>CMS</p></h2>
+                    </Link>
                 </div>
                 <div>
                     <ul>
-                        <li>DASHBOARD</li>
-                        <li>POS</li>
-                        <li>INVENTORY</li>
+                        <li><Link to={'/dashboard'}>DASHBOARD</Link></li>
+                        <li><Link to={'/pos'}>POS</Link></li>
+                        <li><Link to={'/inventory'}>INVENTORY</Link></li>
                     </ul>
                 </div>
             </div>

@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+.navbarSection > div:first-child > * {
+    text-decoration: none;
+    color: white;
+}
+
 .navbarSection > div:last-child > ul{
     display: flex;
     gap: 20px;
@@ -17,4 +22,9 @@
 
 .navbarSection > div:last-child > ul > li:hover {
     border-bottom: 1px solid white;
+}
+
+.navbarSection > div:last-child > ul > li > * {
+    text-decoration: none;
+    color: white;
 }
