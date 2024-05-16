@@ -4,32 +4,37 @@ import NavBar from '../../shared-components/nav-bar/navbar'
 import Grid from '@mui/material/Grid';
 import MyLineChart from '../../shared-components/line-chart/line-chart';
 import MyGauge from '../../shared-components/gauge/gauge';
+import Footer from '../../shared-components/footer/footer';
 
 export default function Dashboard() {
     return (
         <div className={`${dashboard.dashboardBody}`}>
             <NavBar />
             <Container>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} my={5}>
                     <Grid item xs={12}>
-                        <h2>DASHBOARD</h2>
+                        <div className={`${dashboard.welcomeContainer}`}>
+                            <div>
+                                <img src="https://th.bing.com/th/id/OIP.rjuV5M4ltMka_nKHuQz4qAHaHt?w=172&h=180&c=7&r=0&o=5&pid=1.7" alt="" />
+                            </div>
+                            <h2>Welcome <br /> <span>User!</span></h2>
+                        </div>
                     </Grid>
 
                     <Grid item xs={12} md={6}>
                         <h3>Sales Chart</h3>
                         <MyLineChart data={'haha'}/>
+                        <button className={`${dashboard.printButton}`}>Print Sales</button>
                     </Grid>
 
                     <Grid item xs={12} md={6}>
                         <h3>Inventory</h3>
                         <MyGauge data={'awdaw'}/>
-                    </Grid>
-
-                    <Grid item xs={12} md={6}>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt repellat vitae magni deleniti consequatur laudantium fugit consectetur ipsum qui porro nisi amet, provident excepturi facere quia praesentium officiis quasi ab.</p>
+                        <button className={`${dashboard.printButton}`}>Print Inventory</button>
                     </Grid>
                 </Grid>
             </Container>
+            <Footer />
         </div>
     )
 }

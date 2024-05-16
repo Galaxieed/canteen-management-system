@@ -1,0 +1,36 @@
+.welcomeContainer {
+    display: flex;
+
+    border: 1px solid white;
+    border-radius: 45px;
+    padding: 30px;
+}
+
+.welcomeContainer > div > img {
+    border-radius: 50%;
+    height: 150px;
+    aspect-ratio: 1;
+}
+
+.welcomeContainer > h2 {
+    margin-left: 30px;
+}
+
+.welcomeContainer > h2 > span {
+    font-size: xx-large;
+    color: antiquewhite;
+}
+
+
+.printButton {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: medium;
+    border-radius: 45px;
+    transition: all 0.3s ease-in-out;
+    float: right;
+}
+
+.printButton:hover {
+    transform: scale(1.1);
+}
