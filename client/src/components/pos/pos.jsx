@@ -75,16 +75,28 @@ export default function POS() {
     }
 
     function addProductQty(number, index) {
+        const indexOf = productsList.findIndex(prod => prod.product == cartList[index].product)
         let newQty = parseInt(number);
+        let prodQty = parseInt(productsList[indexOf].quantity);
+        console.log('newQty: ' + newQty + "\nprodQty: " + prodQty);
+        if (newQty <= 0 || isNaN(newQty)) return;
         setCartList(prev => {
             const newCartList = [...prev];
+            const oldQty = prev[index].quantity;
+            const quantityDiff = newQty - oldQty;
+            const finalQty = prodQty - quantityDiff;
+            
             newCartList[index] = {
                 ...newCartList[index],
-                totalPrice: newQty > 0 ? prev[index].price * newQty : prev[index].price,
-                quantity: newQty > 0  ? newQty : prev[index].quantity,
+                totalPrice: newQty > 0 && finalQty >= 0 ? prev[index].price * newQty : prev[index].totalPrice,
+                quantity: newQty > 0 && finalQty >= 0  ? newQty : prev[index].quantity,
             };
+        
+            // Update the product list quantity
+            editProductListQty(setProductsList, newQty > 0 && finalQty >= 0 ? finalQty : prodQty, indexOf);
+        
             return newCartList;
-        });        
+        });    
     }
 
     return (

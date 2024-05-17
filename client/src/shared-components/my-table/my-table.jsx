@@ -64,8 +64,9 @@ export default function MyTable(props) {
                 {props.editable ? 
                   (<input type="number" 
                     className={`${myTable.numberInput}`}
-                    value={row.quantity} 
-                      onChange={e => props.changeQty(e.target.value, index)} />) : row.quantity}
+                    value={row.product != '' ? row.quantity : 0} 
+                    readOnly={row.product == ''}
+                    onChange={row.product != '' ? e => props.changeQty(e.target.value, index) : undefined} />) : row.quantity}
               </TableCell>
             </TableRow>
           ))}
