@@ -4,8 +4,9 @@ import NavBar from '../../shared-components/nav-bar/navbar'
 import Footer from '../../shared-components/footer/footer'
 import Grid from '@mui/material/Grid';
 import MyTable from '../../shared-components/my-table/my-table';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { editProductListQty } from '../../services/setters';
+import PropTypes from "prop-types";
 
 const sampleData = [
     {
@@ -25,12 +26,21 @@ const sampleData = [
 
 export default function POS() {
     const [productsList, setProductsList] = useState(sampleData);
+    const [overallPrice, setOverallPrice] = useState(0);
     const [cartList, setCartList] = useState([{
         product: '',
         price: 0,
         totalPrice: 0,
         quantity: 0
     }]);
+
+    useEffect(() => {
+        let overall = 0;
+        for (let cart of cartList) {
+            overall += parseInt(cart.totalPrice);
+        }
+        setOverallPrice(overall);
+    }, [cartList])
 
     function addToCart(newValue, index) {
         editProductListQty(setProductsList, productsList[index].quantity - 1, index);
@@ -127,7 +137,7 @@ export default function POS() {
                         </Grid>
                         <Grid item xs={12} md={4} sx={{display: 'flex', flexDirection: 'column'}}>
                             <h2>Totals</h2>
-                            <Totals />
+                            <Totals overallPrice={overallPrice}/>
                         </Grid>
                     </Grid>
                 </Container>
@@ -137,14 +147,18 @@ export default function POS() {
     )
 }
 
-function Totals() {
+function Totals(props) {
     return (
         <div className={`${pos.totalsContainer}`}>
-            <h3>Overall Price: </h3>
+            <h3>Overall Price: {props.overallPrice}</h3>
             <h3>Payment: </h3>
             <input type="number" />
             <h3>Change: </h3>
             <button>Print Receipt</button>
         </div>
     )
+}
+
+Totals.propTypes = {
+    overallPrice: PropTypes.any
 }
