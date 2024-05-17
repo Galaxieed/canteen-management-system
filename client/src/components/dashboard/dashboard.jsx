@@ -9,7 +9,7 @@ import Footer from '../../shared-components/footer/footer';
 export default function Dashboard() {
     return (
         <div className={`${dashboard.dashboardBody}`}>
-            <NavBar />
+            <NavBar data={'dashboard'}/>
             <Container>
                 <Grid container spacing={2} my={5}>
                     <Grid item xs={12}>

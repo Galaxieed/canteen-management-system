@@ -1,0 +1,6 @@
+.totalsContainer {
+    border: 1px solid white;
+    border-radius: 30px;
+    padding: 20px;
+    flex-grow: 1;
+}

@@ -28,3 +28,7 @@
     text-decoration: none;
     color: white;
 }
+
+.activelink {
+    border-bottom: 1px solid white;
+}
