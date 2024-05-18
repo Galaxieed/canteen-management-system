@@ -27,6 +27,7 @@ const sampleData = [
 export default function POS() {
     const [productsList, setProductsList] = useState(sampleData);
     const [overallPrice, setOverallPrice] = useState(0);
+    const [payment, setPayment] = useState(0);
     const [cartList, setCartList] = useState([{
         product: '',
         price: 0,
@@ -41,6 +42,10 @@ export default function POS() {
         }
         setOverallPrice(overall);
     }, [cartList])
+
+    function handlePaymentChange(value) {
+        setPayment(value < 0 ? 0 : value);
+    }
 
     function addToCart(newValue, index) {
         editProductListQty(setProductsList, productsList[index].quantity - 1, index);
@@ -137,7 +142,9 @@ export default function POS() {
                         </Grid>
                         <Grid item xs={12} md={4} sx={{display: 'flex', flexDirection: 'column'}}>
                             <h2>Totals</h2>
-                            <Totals overallPrice={overallPrice}/>
+                            <Totals overallPrice={overallPrice} 
+                            payment={payment} 
+                            addPayment={handlePaymentChange}/>
                         </Grid>
                     </Grid>
                 </Container>
@@ -148,17 +155,24 @@ export default function POS() {
 }
 
 function Totals(props) {
+    let change = parseInt(props.payment) - parseInt(props.overallPrice);
     return (
         <div className={`${pos.totalsContainer}`}>
             <h3>Overall Price: {props.overallPrice}</h3>
             <h3>Payment: </h3>
-            <input type="number" />
-            <h3>Change: </h3>
-            <button>Print Receipt</button>
+            <input 
+            type="number"
+            readOnly={parseInt(props.overallPrice) == 0}
+            value={parseInt(props.overallPrice) != 0 ? props.payment : 0}
+            onChange={parseInt(props.overallPrice) > 0 ? e => props.addPayment(e.target.value) : undefined}/>
+            <h3>Change: {change < 0 ? `Not Enough` : change}</h3>
+            <button disabled={change < 0}>Print Receipt</button>
         </div>
     )
 }
 
 Totals.propTypes = {
-    overallPrice: PropTypes.any
+    overallPrice: PropTypes.any,
+    payment: PropTypes.any,
+    addPayment: PropTypes.func,
 }
